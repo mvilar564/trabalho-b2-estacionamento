@@ -4,7 +4,7 @@
 - Disciplina: Lógica de Programação e Algoritmos
 - Semestre: 2026/2
 - Trabalho: Sistema de Gestão de Estacionamento
-- Integrante 1: Miguel Juan Montiel — GitHub: [PERFIL]
+- Integrante 1: Miguel Vilar Martins Ferreira — GitHub: [PERFIL]
 - Integrante 2: [NOME] — GitHub: [PERFIL]
 
 ## Cenário e escopo
@@ -79,7 +79,7 @@ Verificações extras: (a) falha de `realloc` simulada, substituindo a função 
 
 ## Declaração individual de autoria e uso de IA
 
-### Integrante 1 — Miguel Juan Montiel
+### Integrante 1 — Miguel Vilar Martins Ferreira
 - Funcionalidades em que atuou: [PREENCHER].
 - Utilizou IA generativa: SIM.
 - Ferramentas e finalidade: Claude (Anthropic), para planejar a estrutura do programa, gerar o código-fonte (`main.c`, `estacionamento.c`, `estacionamento.h`), criar e executar testes automatizados e esclarecer dúvidas sobre o código. [ACRESCENTAR outros usos, se houver.]

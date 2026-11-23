@@ -71,7 +71,7 @@ Verificações extras: (a) falha de `realloc` simulada, substituindo a função 
 - A capacidade da coleção não é reduzida após remoções (não é exigido pelo roteiro).
 
 ## Responsabilidades dos integrantes
-- Integrante 1 — [DESCREVER funcionalidades desenvolvidas, de acordo com o histórico do repositório].
+- Miguel Vilar Martins Ferreira — Participei do desenvolvimento da funcionalidade de cadastro de veículos, acompanhando sua implementação, analisando seu funcionamento e compreendendo as validações necessárias para registrar os veículos nas vagas disponíveis. O desenvolvimento contou com auxílio de ferramentas de Inteligência Artificial, utilizadas como apoio na elaboração e organização do  código, esclarecimento de dúvidas e realização de testes.
 - Integrante 2 — [DESCREVER funcionalidades desenvolvidas, de acordo com o histórico do repositório].
 
 ## Integração das branches

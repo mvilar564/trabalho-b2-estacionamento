@@ -4,7 +4,7 @@
 - Disciplina: Lógica de Programação e Algoritmos
 - Semestre: 2026/2
 - Trabalho: Sistema de Gestão de Estacionamento
-- Integrante 1: Miguel Vilar Martins Ferreira — GitHub: [PERFIL]
+- Integrante 1: Miguel Vilar Martins Ferreira — GitHub: [mvilar564]
 - Integrante 2: [NOME] — GitHub: [PERFIL]
 
 ## Cenário e escopo

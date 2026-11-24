@@ -312,3 +312,74 @@ Resultado atualizar_veiculo(
 
     return RES_OK;
 }
+
+/* ================= MOVIMENTACAO ================= */
+
+Resultado mover_veiculo(
+    Colecao *c,
+    int mapa[][COLUNAS],
+    const char *id,
+    int fileira,
+    int coluna
+) {
+    int idx = buscar_indice(c, id);
+    Veiculo *v;
+
+    if (idx < 0) {
+        return RES_NAO_ENCONTRADO;
+    }
+
+    if (!posicao_valida(fileira, coluna)) {
+        return RES_POSICAO_INVALIDA;
+    }
+
+    v = &c->dados[idx];
+
+    if (v->fileira == fileira &&
+        v->coluna == coluna) {
+        return RES_MESMA_POSICAO;
+    }
+
+    if (mapa[fileira - 1][coluna - 1] != VAGA_LIVRE) {
+        return RES_OCUPADA;
+    }
+
+    mapa[v->fileira - 1][v->coluna - 1] =
+        VAGA_LIVRE;
+
+    mapa[fileira - 1][coluna - 1] =
+        VAGA_OCUPADA;
+
+    v->fileira = fileira;
+    v->coluna = coluna;
+
+    return RES_OK;
+}
+
+/* ================= REMOCAO ================= */
+
+Resultado remover_veiculo(
+    Colecao *c,
+    int mapa[][COLUNAS],
+    const char *id
+) {
+    int idx = buscar_indice(c, id);
+
+    if (idx < 0) {
+        return RES_NAO_ENCONTRADO;
+    }
+
+    mapa[c->dados[idx].fileira - 1]
+        [c->dados[idx].coluna - 1] = VAGA_LIVRE;
+
+    /* Desloca os registros para eliminar a lacuna */
+    memmove(
+        &c->dados[idx],
+        &c->dados[idx + 1],
+        (size_t)(c->qtd - idx - 1) * sizeof c->dados[0]
+    );
+
+    c->qtd--;
+
+    return RES_OK;
+}

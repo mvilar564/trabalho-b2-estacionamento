@@ -71,11 +71,11 @@ Verificações extras: (a) falha de `realloc` simulada, substituindo a função 
 - A capacidade da coleção não é reduzida após remoções (não é exigido pelo roteiro).
 
 ## Responsabilidades dos integrantes
-- Integrante 1 — Miguel Vilar Martins Ferreira: responsável pela revisão e documentação do projeto, organização das contribuições no GitHub e registro dos testes realizados. Também participará da análise e melhoria das funcionalidades do sistema.
+- Integrante 1 — Miguel Vilar Martins Ferreira (mvilar564): criou a branch `feature-testes-cadastro`, abriu e integrou o Pull Request #1, resolveu o conflito de merge no README.md, criou a branch `docs-readme` e atuou na documentação do projeto.
 - Integrante 2 — [DESCREVER funcionalidades desenvolvidas, de acordo com o histórico do repositório].
 
 ## Integração das branches
-[DESCREVER branches utilizadas, funcionalidades integradas e como ocorreu a integração à branch principal.]
+Foram usadas as branches `main`, `feature-testes-cadastro` e `docs-readme`. A `feature-testes-cadastro` foi integrada à `main` pelo Pull Request #1. Ao abrir o PR houve um conflito real no README.md, na linha de responsabilidades do Integrante 1, alterada nas duas branches. O conflito foi resolvido no editor web do GitHub, mantendo uma única versão da linha. A `docs-readme` foi criada para a documentação do projeto.
 
 ## Declaração individual de autoria e uso de IA
 

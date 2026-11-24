@@ -383,3 +383,97 @@ Resultado remover_veiculo(
 
     return RES_OK;
 }
+
+/* ================= CONSISTENCIA ================= */
+
+int verificar_consistencia(
+    const Colecao *c,
+    int mapa[][COLUNAS]
+) {
+    int i, j, k;
+    int ocupadas = 0;
+
+    /* Conta as vagas ocupadas na matriz */
+    for (i = 0; i < FILEIRAS; i++) {
+        for (j = 0; j < COLUNAS; j++) {
+            if (mapa[i][j] == VAGA_OCUPADA) {
+                ocupadas++;
+            }
+        }
+    }
+
+    /* Compara com a quantidade de registros */
+    if (ocupadas != c->qtd) {
+        return 0;
+    }
+
+    /* Verifica as posicoes de cada veiculo */
+    for (k = 0; k < c->qtd; k++) {
+
+        if (!posicao_valida(
+                c->dados[k].fileira,
+                c->dados[k].coluna)) {
+            return 0;
+        }
+
+        if (mapa[c->dados[k].fileira - 1]
+                [c->dados[k].coluna - 1] != VAGA_OCUPADA) {
+            return 0;
+        }
+
+        /* Impede dois registros na mesma vaga */
+        for (j = 0; j < k; j++) {
+            if (c->dados[j].fileira ==
+                    c->dados[k].fileira &&
+                c->dados[j].coluna ==
+                    c->dados[k].coluna) {
+
+                return 0;
+            }
+        }
+    }
+
+    return 1;
+}
+
+/* ================= RELATORIO ================= */
+
+Relatorio calcular_relatorio(
+    const Colecao *c,
+    int mapa[][COLUNAS]
+) {
+    Relatorio r = {
+        TOTAL_VAGAS, 0, 0, 0.0, 0, 0, 0
+    };
+
+    int i, j;
+
+    /* Conta vagas ocupadas */
+    for (i = 0; i < FILEIRAS; i++) {
+        for (j = 0; j < COLUNAS; j++) {
+            if (mapa[i][j] == VAGA_OCUPADA) {
+                r.ocupadas++;
+            }
+        }
+    }
+
+    /* Calcula vagas livres e percentual */
+    r.livres = r.total - r.ocupadas;
+    r.percentual = (r.ocupadas * 100.0) / r.total;
+
+    /* Conta carros e motos */
+    for (i = 0; i < c->qtd; i++) {
+
+        if (c->dados[i].categoria == CAT_CARRO) {
+            r.carros++;
+
+        } else if (c->dados[i].categoria == CAT_MOTO) {
+            r.motos++;
+        }
+    }
+
+    /* Confere a consistencia do estacionamento */
+    r.consistente = verificar_consistencia(c, mapa);
+
+    return r;
+}

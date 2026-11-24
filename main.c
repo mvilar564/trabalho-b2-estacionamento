@@ -7,6 +7,7 @@
 /* ---------- Auxiliares de interface ---------- */
 
 
+
 static void mostrar_menu(void) {
     printf("\n===== ESTACIONAMENTO =====\n");
     printf("1 - Cadastrar veiculo\n");
@@ -14,8 +15,12 @@ static void mostrar_menu(void) {
     printf("3 - Atualizar descricao ou categoria\n");
     printf("4 - Mover veiculo para outra vaga\n");
     printf("5 - Remover veiculo\n");
+    printf("6 - Listar veiculos cadastrados\n");
+    printf("7 - Exibir mapa de vagas\n");
+    printf("8 - Exibir relatorio da ocupacao\n");
     printf("0 - Encerrar\n");
 }
+
 
 
 static void mostrar_resultado(Resultado r) {
@@ -163,6 +168,10 @@ int main(void) {
         }
 
         switch (opcao) {
+            case 1:
+                tela_cadastrar(&colecao, mapa);
+                break;
+
             case 2:
                 tela_consultar(&colecao);
                 break;
@@ -170,12 +179,28 @@ int main(void) {
             case 3:
                 tela_atualizar(&colecao);
                 break;
+
             case 4:
                 tela_mover(&colecao, mapa);
                 break;
 
             case 5:
                 tela_remover(&colecao, mapa);
+                break;
+
+            case 6:
+                tela_listar(&colecao);
+                break;
+
+            case 7:
+                exibir_mapa(mapa);
+                break;
+
+            case 8:
+                tela_relatorio(&colecao, mapa);
+                break;
+
+            case 0:
                 break;
 
             default:
@@ -322,4 +347,47 @@ static void tela_remover(Colecao *c, int mapa[][COLUNAS]) {
     } else {
         mostrar_resultado(r);
     }
+}
+
+/* ---------- Listagem e relatorio ---------- */
+
+static void tela_listar(const Colecao *c) {
+    int i;
+
+    if (c->qtd == 0) {
+        printf("Nenhum veiculo cadastrado.\n");
+        return;
+    }
+
+    printf("%-9s %-30s %-10s %s\n",
+           "ID", "Descricao", "Categoria", "Vaga");
+
+    for (i = 0; i < c->qtd; i++) {
+        printf("%-9s %-30s %-10s F%d/C%d\n",
+               c->dados[i].id,
+               c->dados[i].descricao,
+               nome_categoria(c->dados[i].categoria),
+               c->dados[i].fileira,
+               c->dados[i].coluna);
+    }
+}
+
+static void tela_relatorio(
+    const Colecao *c,
+    int mapa[][COLUNAS]
+) {
+    Relatorio r = calcular_relatorio(c, mapa);
+
+    printf("Total de vagas.....: %d\n", r.total);
+    printf("Vagas ocupadas.....: %d\n", r.ocupadas);
+    printf("Vagas livres.......: %d\n", r.livres);
+    printf("Percentual ocupacao: %.2f%%\n", r.percentual);
+    printf("Carros.............: %d\n", r.carros);
+    printf("Motos..............: %d\n", r.motos);
+
+    printf("Registros em uso / capacidade reservada: %d / %d\n",
+           c->qtd, c->capacidade);
+
+    printf("Consistencia matriz x registros: %s\n",
+           r.consistente ? "OK" : "FALHOU");
 }

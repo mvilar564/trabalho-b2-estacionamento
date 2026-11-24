@@ -80,10 +80,10 @@ Foram usadas as branches `main`, `feature-testes-cadastro` e `docs-readme`. A `f
 ## Declaração individual de autoria e uso de IA
 
 ### Integrante 1 — Miguel Vilar Martins Ferreira
-- Funcionalidades em que atuou: revisão da documentação do projeto, organização das contribuições no GitHub e análise dos testes e das funcionalidades do sistema.
+- Funcionalidades em que atuou: documentação do projeto e organização das contribuições no GitHub (branches, Pull Request e resolução de conflito de merge).
 - Utilizou IA generativa: SIM.
-- Ferramentas e finalidade: Claude (Anthropic) e ChatGPT (OpenAI), utilizados para auxiliar no desenvolvimento do código, esclarecer dúvidas sobre programação, compreender o funcionamento do sistema e orientar a documentação e a organização do projeto no GitHub.
-- Exemplos de solicitações relevantes e sugestões incorporadas: foram solicitadas explicações sobre o código, auxílio no desenvolvimento do sistema e orientações sobre documentação, GitHub, branches e commits. As sugestões foram analisadas durante o trabalho.
+- Ferramentas e finalidade: Claude (Anthropic), utilizado para orientação sobre Git e GitHub (criar branch, abrir Pull Request, resolver conflito de merge pelo site) e para revisar o texto do README.
+- Exemplos de solicitações relevantes e sugestões incorporadas: pedi orientação sobre como criar uma branch pelo site do GitHub, como abrir e integrar um Pull Request e como resolver o conflito de merge no README.md. Segui os passos sugeridos e executei cada um deles no repositório. Também pedi revisão do README, e passei a descrever apenas as ações que realizei de fato.
 - Código externo adaptado e fonte: Não houve.
 
 ### Integrante 2 — [NOME]

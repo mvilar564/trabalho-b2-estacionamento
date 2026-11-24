@@ -272,3 +272,43 @@ Resultado cadastrar_veiculo(
 
     return RES_OK;
 }
+
+/* ================= ATUALIZACAO ================= */
+
+Resultado atualizar_veiculo(
+    Colecao *c,
+    const char *id,
+    const char *nova_desc,
+    int nova_cat
+) {
+    int idx = buscar_indice(c, id);
+    Veiculo *v;
+
+    if (idx < 0) {
+        return RES_NAO_ENCONTRADO;
+    }
+
+    if ((nova_desc != NULL &&
+         !validar_descricao(nova_desc)) ||
+        (nova_cat != 0 &&
+         !validar_categoria(nova_cat))) {
+        return RES_DADO_INVALIDO;
+    }
+
+    v = &c->dados[idx];
+
+    if (nova_desc != NULL) {
+        snprintf(
+            v->descricao,
+            sizeof v->descricao,
+            "%s",
+            nova_desc
+        );
+    }
+
+    if (nova_cat != 0) {
+        v->categoria = nova_cat;
+    }
+
+    return RES_OK;
+}

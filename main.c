@@ -9,6 +9,8 @@
 static void mostrar_menu(void) {
     printf("\n===== ESTACIONAMENTO =====\n");
     printf("1 - Cadastrar veiculo\n");
+    printf("2 - Consultar veiculo por identificador\n");
+    printf("3 - Atualizar descricao ou categoria\n");
     printf("0 - Encerrar\n");
 }
 
@@ -157,11 +159,12 @@ int main(void) {
         }
 
         switch (opcao) {
-            case 1:
-                tela_cadastrar(&colecao, mapa);
+            case 2:
+                tela_consultar(&colecao);
                 break;
 
-            case 0:
+            case 3:
+                tela_atualizar(&colecao);
                 break;
 
             default:
@@ -175,4 +178,90 @@ int main(void) {
     printf("Memoria liberada. Ate logo!\n");
 
     return 0;
+}
+
+/* ---------- Consulta e atualizacao ---------- */
+
+static const char *nome_categoria(int cat) {
+    return cat == CAT_CARRO ? "carro" : "moto";
+}
+
+static void mostrar_veiculo(const Veiculo *v) {
+    printf("Identificador: %s\n", v->id);
+    printf("Descricao....: %s\n", v->descricao);
+    printf("Categoria....: %s\n", nome_categoria(v->categoria));
+    printf("Posicao......: F%d/C%d\n", v->fileira, v->coluna);
+}
+
+static void tela_consultar(const Colecao *c) {
+    char id[128];
+    int idx;
+
+    if (!pedir_id(id, sizeof id)) {
+        return;
+    }
+
+    idx = buscar_indice(c, id);
+
+    if (idx < 0) {
+        mostrar_resultado(RES_NAO_ENCONTRADO);
+        return;
+    }
+
+    mostrar_veiculo(&c->dados[idx]);
+}
+
+static void tela_atualizar(Colecao *c) {
+    char id[128];
+    char desc[128];
+    int cat = 0;
+    int st;
+    Resultado r;
+
+    if (!pedir_id(id, sizeof id)) {
+        return;
+    }
+
+    if (buscar_indice(c, id) < 0) {
+        mostrar_resultado(RES_NAO_ENCONTRADO);
+        return;
+    }
+
+    printf("Nova descricao (Enter para manter): ");
+    fflush(stdout);
+
+    if (ler_linha(desc, sizeof desc) != LINHA_OK) {
+        printf("Entrada invalida. Nada foi alterado.\n");
+        return;
+    }
+
+    st = ler_inteiro(
+        "Nova categoria (1 = carro, 2 = moto, 0 = manter): ",
+        &cat
+    );
+
+    if (st != LINHA_OK || cat < 0 || cat > 2) {
+        printf("Categoria invalida. Nada foi alterado.\n");
+        return;
+    }
+
+    if (desc[0] == '\0' && cat == 0) {
+        printf("Nada para alterar.\n");
+        return;
+    }
+
+    r = atualizar_veiculo(
+        c,
+        id,
+        desc[0] == '\0' ? NULL : desc,
+        cat
+    );
+
+    if (r == RES_DADO_INVALIDO) {
+        printf("Descricao invalida (mais de 60 caracteres ou so espacos). Nada foi alterado.\n");
+    } else if (r == RES_OK) {
+        printf("Veiculo %s atualizado.\n", id);
+    } else {
+        mostrar_resultado(r);
+    }
 }

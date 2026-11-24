@@ -6,13 +6,17 @@
 
 /* ---------- Auxiliares de interface ---------- */
 
+
 static void mostrar_menu(void) {
     printf("\n===== ESTACIONAMENTO =====\n");
     printf("1 - Cadastrar veiculo\n");
     printf("2 - Consultar veiculo por identificador\n");
     printf("3 - Atualizar descricao ou categoria\n");
+    printf("4 - Mover veiculo para outra vaga\n");
+    printf("5 - Remover veiculo\n");
     printf("0 - Encerrar\n");
 }
+
 
 static void mostrar_resultado(Resultado r) {
     switch (r) {
@@ -166,6 +170,13 @@ int main(void) {
             case 3:
                 tela_atualizar(&colecao);
                 break;
+            case 4:
+                tela_mover(&colecao, mapa);
+                break;
+
+            case 5:
+                tela_remover(&colecao, mapa);
+                break;
 
             default:
                 printf("Opcao inexistente. Tente novamente.\n");
@@ -261,6 +272,53 @@ static void tela_atualizar(Colecao *c) {
         printf("Descricao invalida (mais de 60 caracteres ou so espacos). Nada foi alterado.\n");
     } else if (r == RES_OK) {
         printf("Veiculo %s atualizado.\n", id);
+    } else {
+        mostrar_resultado(r);
+    }
+}
+
+/* ---------- Movimentacao e remocao ---------- */
+
+static void tela_mover(Colecao *c, int mapa[][COLUNAS]) {
+    char id[128];
+    int fileira, coluna;
+    Resultado r;
+
+    if (!pedir_id(id, sizeof id)) {
+        return;
+    }
+
+    if (buscar_indice(c, id) < 0) {
+        mostrar_resultado(RES_NAO_ENCONTRADO);
+        return;
+    }
+
+    if (!pedir_posicao(&fileira, &coluna)) {
+        return;
+    }
+
+    r = mover_veiculo(c, mapa, id, fileira, coluna);
+
+    if (r == RES_OK) {
+        printf("Veiculo %s movido para F%d/C%d.\n",
+               id, fileira, coluna);
+    } else {
+        mostrar_resultado(r);
+    }
+}
+
+static void tela_remover(Colecao *c, int mapa[][COLUNAS]) {
+    char id[128];
+    Resultado r;
+
+    if (!pedir_id(id, sizeof id)) {
+        return;
+    }
+
+    r = remover_veiculo(c, mapa, id);
+
+    if (r == RES_OK) {
+        printf("Veiculo %s removido; vaga liberada.\n", id);
     } else {
         mostrar_resultado(r);
     }

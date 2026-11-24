@@ -71,7 +71,7 @@ Verificações extras: (a) falha de `realloc` simulada, substituindo a função 
 - A capacidade da coleção não é reduzida após remoções (não é exigido pelo roteiro).
 
 ## Responsabilidades dos integrantes
-- Integrante 1 — [DESCREVER funcionalidades desenvolvidas, de acordo com o histórico do repositório].
+- Integrante 1 — Miguel Vilar Martins Ferreira: responsável pela revisão e documentação do projeto, organização das contribuições no GitHub e registro dos testes realizados. Também participará da análise e melhoria das funcionalidades do sistema.
 - Integrante 2 — [DESCREVER funcionalidades desenvolvidas, de acordo com o histórico do repositório].
 
 ## Integração das branches
@@ -80,11 +80,11 @@ Verificações extras: (a) falha de `realloc` simulada, substituindo a função 
 ## Declaração individual de autoria e uso de IA
 
 ### Integrante 1 — Miguel Vilar Martins Ferreira
-- Funcionalidades em que atuou: [PREENCHER].
+- Funcionalidades em que atuou: revisão da documentação do projeto, organização das contribuições no GitHub e análise dos testes e das funcionalidades do sistema.
 - Utilizou IA generativa: SIM.
-- Ferramentas e finalidade: Claude (Anthropic), para planejar a estrutura do programa, gerar o código-fonte (`main.c`, `estacionamento.c`, `estacionamento.h`), criar e executar testes automatizados e esclarecer dúvidas sobre o código. [ACRESCENTAR outros usos, se houver.]
-- Exemplos de solicitações relevantes e sugestões incorporadas: enviei o roteiro do trabalho e pedi ajuda para desenvolvê-lo e para escrever os códigos; o Claude propôs a divisão em funções, a struct `Colecao` e as validações, e gerou os três arquivos de código, que foram incorporados. [DESCREVER o que revisei, testei, compreendi ou modifiquei por conta própria.]
-- Código externo adaptado e fonte: [PREENCHER ou declarar que não houve].
+- Ferramentas e finalidade: Claude (Anthropic) e ChatGPT (OpenAI), utilizados para auxiliar no desenvolvimento do código, esclarecer dúvidas sobre programação, compreender o funcionamento do sistema e orientar a documentação e a organização do projeto no GitHub.
+- Exemplos de solicitações relevantes e sugestões incorporadas: foram solicitadas explicações sobre o código, auxílio no desenvolvimento do sistema e orientações sobre documentação, GitHub, branches e commits. As sugestões foram analisadas durante o trabalho.
+- Código externo adaptado e fonte: Não houve.
 
 ### Integrante 2 — [NOME]
 - Funcionalidades em que atuou: [PREENCHER].

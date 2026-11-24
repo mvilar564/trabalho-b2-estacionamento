@@ -5,7 +5,7 @@
 - Semestre: 2026/2
 - Trabalho: Sistema de Gestão de Estacionamento
 - Integrante 1: Miguel Vilar Martins Ferreira — GitHub: [mvilar564](https://github.com/mvilar564)
-- Integrante 2: [NOME] — GitHub: [PERFIL]
+- Integrante 2: Renato Nunes Veloso de Oliveira — Github: [rnz277]https://github.com/rnz277
 
 ## Cenário e escopo
 Sistema de terminal em C para gerenciar um estacionamento fictício de 20 vagas (4 fileiras × 5 colunas). Os registros permanecem apenas durante a execução; não há persistência em arquivos. Os identificadores e descrições usados nos testes são fictícios.
@@ -72,7 +72,7 @@ Verificações extras: (a) falha de `realloc` simulada, substituindo a função 
 
 ## Responsabilidades dos integrantes
 - Integrante 1 — Miguel Vilar Martins Ferreira (mvilar564): criou a branch `feature-testes-cadastro`, abriu e integrou o Pull Request #1, resolveu o conflito de merge no README.md, criou a branch `docs-readme` e atuou na documentação do projeto.
-- Integrante 2 — [DESCREVER funcionalidades desenvolvidas, de acordo com o histórico do repositório].
+- Integrante 2 — Renato Nunes Veloso de Oliveira (rnz277): atuou na revisão e organização do código dos arquivos main.c e estacionamento.c, trabalhando com as funcionalidades de cadastro, consulta, atualização, movimentação e remoção de veículos, além da listagem e dos relatórios de ocupação. Também realizou a análise das funções, verificou a lógica de validação dos dados, o gerenciamento de memória dinâmica e a utilização da matriz de vagas, organizando suas contribuições em etapas de desenvolvimento e commits no GitHub.
 
 ## Integração das branches
 Foram usadas as branches `main`, `feature-testes-cadastro` e `docs-readme`. A `feature-testes-cadastro` foi integrada à `main` pelo Pull Request #1. Ao abrir o PR houve um conflito real no README.md, na linha de responsabilidades do Integrante 1, alterada nas duas branches. O conflito foi resolvido no editor web do GitHub, mantendo uma única versão da linha. A `docs-readme` foi criada para a documentação do projeto.

@@ -86,9 +86,9 @@ Foram usadas as branches `main`, `feature-testes-cadastro` e `docs-readme`. A `f
 - Exemplos de solicitações relevantes e sugestões incorporadas: pedi orientação sobre como criar uma branch pelo site do GitHub, como abrir e integrar um Pull Request e como resolver o conflito de merge no README.md. Segui os passos sugeridos e executei cada um deles no repositório. Também pedi revisão do README, e passei a descrever apenas as ações que realizei de fato.
 - Código externo adaptado e fonte: Não houve.
 
-### Integrante 2 — [NOME]
-- Funcionalidades em que atuou: [PREENCHER].
-- Utilizou IA generativa: [SIM/NÃO].
-- Ferramentas e finalidade: [PREENCHER; se não utilizou, declarar expressamente].
-- Exemplos de solicitações relevantes e sugestões incorporadas: [PREENCHER].
-- Código externo adaptado e fonte: [PREENCHER ou declarar que não houve].
+### Integrante 2 — Renato Nnunes Veloso
+- Funcionalidades em que atuou: programando as funcionalidades do sistema e revisando as mesmas.
+- Utilizou IA generativa: Sim.
+- Ferramentas e finalidade: ChatGPT (OpenAI), utilizados para auxiliar no desenvolvimento do código e para ajudar na logica que foi proposta e para conseguir alinhar os raciocionios com a codagem na mao.
+- Exemplos de solicitações relevantes e sugestões incorporadas: Solicitei explicações sobre funções do código que não estavam claras para mim, buscando entender melhor seu funcionamento e sua aplicação no sistema de estacionamento. As explicações me ajudaram a compreender a lógica do programa, o uso das estruturas de dados e a relação entre as funções.
+- Código externo adaptado e fonte: Nao houve.
